@@ -1,0 +1,21 @@
+[
+        {
+            "name": "kliker",
+            "description": "to gra w kturej klikasz w przycisk",
+            "url":"https://kliker-eight.vercel.app",
+            "img":"./screnshots/kliker_foto.png",
+            "date":"2025",
+            "state":"beta.version"
+            
+        },
+        {
+            "name": "Symulator ludzików",
+            "description": "to symulacja",
+            "url":"https://kliker-eight.vercel.app",
+            "img":"./screnshots/kliker_foto.png",
+            "date":"2025",
+            "state":"alpha"
+            
+        }
+    
+    ]
