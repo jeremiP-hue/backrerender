@@ -3,7 +3,7 @@ const cors = require('cors');
 const projects = require("./projects.json")
 const app = express()
 
-const port = 3000
+const port = process.env.PORT || 3000
 
 const allowedOrigins = [
   'http://localhost:5173',
