@@ -42,6 +42,8 @@ app.use(cors({
   }
 }));
 
+app.use(express.json())
+
 app.get('/', async (req, res) => {
   const projekts = await getUsers()
   res.send(projekts)
@@ -56,11 +58,10 @@ app.get("/projects", async (req, res) => {
 app.post("/project", async (req, res) => {
   const { data, error } = await supabase
     .from('projekty')
-    .insert([
-      projects[1]
-    ])
+    .insert(
+      req.body
+    )
     .select()
-
 
   if (error) {
     return res.status(500).json({ error: error.message })
@@ -68,6 +69,21 @@ app.post("/project", async (req, res) => {
 
   res.status(201).json(data)
 })
+
+app.delete("/project/:id", async (req, res) => {
+  const { id } = req.params;
+
+  const { data, error } = await supabase
+    .from("projekty")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    return res.status(500).json({ error: error.message });
+  }
+
+  res.status(200).json({ message: "Deleted", data });
+});
 
 
 
