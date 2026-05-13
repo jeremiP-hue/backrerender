@@ -70,6 +70,21 @@ app.post("/project", async (req, res) => {
   res.status(201).json(data)
 })
 
+app.put("/project/:id", async (req, res) => {
+  const { id } = req.params;
+
+  const { data, error } = await supabase
+    .from('projekty')
+    .update(req.body)
+    .eq("id", id)
+    .select()
+
+  if (error) {
+    return res.status(500).json({ error: error.message })
+  }
+
+  res.status(201).json(data)
+})
 app.delete("/project/:id", async (req, res) => {
   const { id } = req.params;
 
