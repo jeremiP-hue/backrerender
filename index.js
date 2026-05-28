@@ -70,6 +70,9 @@ app.post("/project", async (req, res) => {
   res.status(201).json(data)
 })
 
+
+
+
 app.put("/project/:id", async (req, res) => {
   const { id } = req.params;
 
@@ -100,6 +103,21 @@ app.delete("/project/:id", async (req, res) => {
   res.status(200).json({ message: "Deleted", data });
 });
 
+
+app.post("/contact", async (req, res) => {
+  const { data, error } = await supabase
+    .from('kontakty')
+    .insert(
+      req.body
+    )
+    .select()
+
+  if (error) {
+    return res.status(500).json({ error: error.message })
+  }
+
+  res.status(201).json(data)
+})
 
 
 app.listen(port, () => {
