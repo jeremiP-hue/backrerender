@@ -119,6 +119,29 @@ app.post("/contact", async (req, res) => {
   res.status(201).json(data)
 })
 
+app.post("/wynik", async (req, res) => {
+  const { name, czas_wygranej } = req.body;
+
+  const { data, error } = await supabase
+    .from('wyniki')
+    .insert({
+      name,
+      czas_wygranej,
+    })
+    .select()
+
+  if (error) {
+    if (error.code === "42703") {
+      return res.status(500).json({
+        error: "Tabela wyniki nie ma kolumny czas_wygranej. Dodaj ja w Supabase.",
+      })
+    }
+
+    return res.status(500).json({ error: error.message })
+  }
+
+  res.status(201).json(data)
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
