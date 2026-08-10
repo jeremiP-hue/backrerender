@@ -9,6 +9,7 @@ const port = process.env.PORT || 3000
 const allowedOrigins = [
   'http://localhost:5173',
   'https://rerender-two.vercel.app',
+  'https://kliker-eight.vercel.app'
 ]
 const NEXT_PUBLIC_SUPABASE_URL = "https://onriwqfpnzldrvjehhgj.supabase.co"
 const NEXT_PUBLIC_SUPABASE_ANON_KEY = "sb_publishable_vaZTIaMhECO-8qXk-M8SdA_05rdUgJ_"
